@@ -225,7 +225,7 @@ int ClientConnection::Write(string dat)
     size_t pos = 0;
     while(remain) {
         size_t r = write(mFd, &dat.c_str()[pos], remain);
-        if (r<0) break;
+        if ((int)r<0) break;
         remain-=r;
         pos+=r;
     }

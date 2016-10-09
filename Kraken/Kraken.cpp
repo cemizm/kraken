@@ -63,7 +63,7 @@ Kraken::Kraken(const char* config, int server_port) :
                 unsigned int devno;
                 unsigned int advance;
                 uint64_t offset;
-                sscanf(&pFile[pos+7],"%u %u %luu",&devno,&advance,&offset);
+                sscanf(&pFile[pos+7],"%u %u %llu",&devno,&advance,&offset);
                 // printf("%u %u %llu\n", devno, advance, offset );
                 assert(devno<mNumDevices);
                 char num[32];
