@@ -4,6 +4,9 @@
 #include <stdint.h>
 #include <queue>
 #include <semaphore.h>
+#ifdef __APPLE__
+#include "AppleSema.h"
+#endif
 #if defined(__APPLE__)
 #define mmap64          mmap
 #endif /* __APPLE__ */

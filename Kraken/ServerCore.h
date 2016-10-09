@@ -8,7 +8,9 @@
 #include <pthread.h>
 #include <map>
 #include <semaphore.h>
-
+#ifdef __APPLE__
+#include "AppleSema.h"
+#endif
 using namespace std;
 
 typedef void (*dispatch)(int, std::string);

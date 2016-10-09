@@ -15,6 +15,11 @@
 #include <sys/time.h>
 #include "ServerCore.h"
 
+#ifdef __APPLE__
+#include "AppleSema.h"
+#endif
+
+
 using namespace std;
 
 class Kraken {

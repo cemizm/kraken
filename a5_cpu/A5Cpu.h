@@ -54,6 +54,10 @@
 #include <map>
 #include <deque>
 
+#ifdef __APPLE__
+#include "../Kraken/AppleSema.h"
+#endif
+
 using namespace std;
 
 class DLL_LOCAL A5Cpu {
