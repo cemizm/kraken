@@ -4,9 +4,13 @@
 #include <stdint.h>
 #include <queue>
 #include <semaphore.h>
+
 #ifdef __APPLE__
 #include "AppleSema.h"
 #endif
+
+#define BLOCKS	32
+
 #if defined(__APPLE__)
 #define mmap64          mmap
 #endif /* __APPLE__ */
@@ -41,8 +45,9 @@ public:
     typedef struct {
         class NcqRequestor* req;
         uint64_t            blockno;
-        void*               addr;
+        unsigned char       addr[4096];
         int                 next_free;
+		bool				ready;
     } mapRequest_t;
 
     static void* thread_stub(void* arg);
@@ -50,8 +55,7 @@ public:
 
 private:
     int mDevice;
-    unsigned char mBuffer[4096];
-    mapRequest_t mMappings[32];
+    mapRequest_t mMappings[BLOCKS];
     queue< request_t > mRequests;
     int mFreeMap;
     sem_t mMutex;
