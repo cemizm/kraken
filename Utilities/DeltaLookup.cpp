@@ -7,10 +7,13 @@
 #include <list>
 #include <sys/time.h>
 #include <assert.h>
-#include <linux/fs.h>
 #include <stdlib.h>
-#include <stropts.h>
 #include <fcntl.h>
+
+#if not defined(__APPLE__)
+#include <linux/fs.h>
+#include <stropts.h>
+#endif /* __APPLE__ */
 
 #define READ8()\
     bits = (mBitBuffer>>(mBitCount-8))&0xff;                 \

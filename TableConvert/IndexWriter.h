@@ -5,6 +5,10 @@
 #include <string>
 #include <stdio.h>
 
+#if defined(__APPLE__)
+#define fseeko64          fseeko
+#endif /* __APPLE__ */
+
 class IndexWriter : public BaseWriter {
 public:
     IndexWriter(std::string &path, std::string &index, unsigned int blockSize);

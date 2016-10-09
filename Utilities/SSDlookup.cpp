@@ -6,11 +6,14 @@
 #include <list>
 #include <sys/time.h>
 #include <assert.h>
-#include <linux/fs.h>
 #include <stdlib.h>
-#include <stropts.h>
 #include <fcntl.h>
 #include <unistd.h>
+
+#if not defined(__APPLE__)
+#include <linux/fs.h>
+#include <stropts.h>
+#endif /* __APPLE__ */
 
 SSDlookup::SSDlookup(std::string path, std::string device)
 {
